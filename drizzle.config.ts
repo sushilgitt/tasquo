@@ -1,5 +1,9 @@
 import { defineConfig } from "drizzle-kit";
-import "dotenv/config";
+import { config } from "dotenv";
+
+// Load .env.local first (local secrets), then .env as a fallback.
+config({ path: ".env.local" });
+config();
 
 export default defineConfig({
   schema: "./src/db/schema.ts",
